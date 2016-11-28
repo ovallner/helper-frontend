@@ -1,0 +1,35 @@
+
+
+.btn-circle {
+  width: 79px;
+  height: 79px;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+  line-height: 2.00;
+  border-radius: 70px;
+}
+
+.row-centered {
+    text-align:center;
+}
+
+p {
+    font-size: 18px;
+}
+.col-centered {
+    display:inline-block;
+    float: none;
+    text-align:center;
+    /* reset the text-align */
+    /* inline-block space fix */
+}
+
+h1 {
+    font-size: 100px;
+}
+
+.container {
+
+    padding-top: 100px;
+}

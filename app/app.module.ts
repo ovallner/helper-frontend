@@ -12,7 +12,7 @@ import { AccountLoginComponent } from './login/login.component';
 import { UserService } from './user.service';
 import { AccountsService } from './accounts.service';
 import { ChatLanding } from './chat/chat-landing.component';
-//import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   imports:      [ 
@@ -23,7 +23,7 @@ import { ChatLanding } from './chat/chat-landing.component';
       { path: 'register', component: AccountCreateComponent },
       { path: 'chat', component: ChatComponent },
       { path: 'chatrooms', component: ChatLanding},
-      //{ path: 'home', component: HomeComponent}
+      { path: 'home', component: HomeComponent}
     ])
   ],
   declarations: [
@@ -32,7 +32,7 @@ import { ChatLanding } from './chat/chat-landing.component';
     AccountCreateComponent,
     ChatLanding,
     ChatComponent,
-    //HomeComponent
+    HomeComponent
     //DashboardCounselorComponent,
     //DashboardPatientComponent
   ],

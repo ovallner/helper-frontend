@@ -27,7 +27,7 @@ export class AccountLoginComponent {
 	}
     login() {
         if(this.userService.isAccount(this._temp.username, this._temp.password)) {
-            this.router.navigateByUrl('chat');
+            this.router.navigateByUrl('home');
         }
     }
     

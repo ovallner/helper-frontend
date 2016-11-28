@@ -21,7 +21,7 @@ const login_component_1 = require('./login/login.component');
 const user_service_1 = require('./user.service');
 const accounts_service_1 = require('./accounts.service');
 const chat_landing_component_1 = require('./chat/chat-landing.component');
-//import { HomeComponent } from './home/home.component';
+const home_component_1 = require('./home/home.component');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -34,6 +34,7 @@ AppModule = __decorate([
                 { path: 'register', component: create_an_account_component_1.AccountCreateComponent },
                 { path: 'chat', component: chat_component_1.ChatComponent },
                 { path: 'chatrooms', component: chat_landing_component_1.ChatLanding },
+                { path: 'home', component: home_component_1.HomeComponent }
             ])
         ],
         declarations: [
@@ -42,6 +43,7 @@ AppModule = __decorate([
             create_an_account_component_1.AccountCreateComponent,
             chat_landing_component_1.ChatLanding,
             chat_component_1.ChatComponent,
+            home_component_1.HomeComponent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [user_service_1.UserService, accounts_service_1.AccountsService]
