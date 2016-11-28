@@ -1,0 +1,47 @@
+<div class="container">
+<h1>{{ title }}</h1>
+<div class="row">
+    <div class="col-md-8">
+        <div id="create-account-panel" class="panel panel-info">
+            <div class="panel-heading">Create an Account</div>
+        <div id="create-account-body"class="panel-body">
+            <div class="form -group">
+                <label for="user_first_name">First name</label>
+                <input  id="user_first_name" class="form-control" [(ngModel)]="_temp.first_name" />
+                <label for="user_last_name">Last name</label>
+                <input  id="user_last_name" class="form-control" [(ngModel)]="_temp.last_name" />
+                <label for="user_username">Username</label>
+                <input  id="user_username" class="form-control" [(ngModel)]="_temp.username" />
+                <button type="button" id="check-name-button" class="btn btn-default">Check Name</button>
+            <div class="form-group">
+                <label for="user_email">Email</label>
+                <input  id="user_email" class="form-control" [(ngModel)]="_temp.email" />
+                </div>
+             <div class="form-group">
+                <label for="user_password">Password</label>
+                <input  id="password" class="form-control" [(ngModel)]="_temp.password" />
+                </div>   
+            <div class="form-group">
+                <label for="user_isCounselor">
+                <input  id="user_isCounselor"
+                  type="checkbox"
+                  [(ngModel)]="_temp.isCounselor" />
+                  I am a counselor
+                </label>
+            </div>      
+            <div class="form-group">
+                <label for="user_isPatient">
+                <input  id="user_isPatient"
+                  type="checkbox"
+                  [(ngModel)]="_temp.isPatient" />
+                  I am seeking help.
+                </label>
+            </div>                                 
+            <button type="button" id="login-button" (click)= "createAccount()" class="btn btn-default">Create</button>
+            <a href="/account-login" >Already have an account? Sign In.</a>
+            <br />
+        </div>        
+    </div>
+</div>
+
+</div>

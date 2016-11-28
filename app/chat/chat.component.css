@@ -1,0 +1,15 @@
+#send-box {
+    background: #000; 
+    padding: 3px; 
+    position: fixed; 
+    bottom: 0;
+    width: 100%;
+}
+
+#message-box {
+    width: 95%;
+}
+
+#message {
+    font: 20px "Courier New", Courier, monospace;
+}
