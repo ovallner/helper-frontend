@@ -11,21 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const user_1 = require('../user');
 const accounts_service_1 = require('./../accounts.service');
+const router_1 = require('@angular/router');
 let AccountCreateComponent = class AccountCreateComponent {
-    constructor(accountsService) {
+    constructor(accountsService, route, router) {
         this.accountsService = accountsService;
+        this.route = route;
+        this.router = router;
         this.title = "Create An Account";
-        this.accounts = accountsService.getAccounts();
+        accountsService.list()
+            .then(x => this.accounts = x);
         this._temp = new user_1.User;
         /** clear temp */
     }
     ;
     createAccount() {
-        this.accountsService.addAccount(this._temp);
+        this.accountsService.add(this._temp)
+            .then(() => this.router.navigateByUrl('/home'));
         /** clear temp */
         console.log("I have been clicked");
         console.log(this._temp);
-        console.log(this.accountsService.accounts);
     }
     ;
 };
@@ -36,7 +40,7 @@ AccountCreateComponent = __decorate([
         styleUrls: ['./app/create-an-account/create-an-account.css'],
         providers: [accounts_service_1.AccountsService]
     }), 
-    __metadata('design:paramtypes', [accounts_service_1.AccountsService])
+    __metadata('design:paramtypes', [accounts_service_1.AccountsService, router_1.ActivatedRoute, router_1.Router])
 ], AccountCreateComponent);
 exports.AccountCreateComponent = AccountCreateComponent;
 //# sourceMappingURL=create-an-account.component.js.map

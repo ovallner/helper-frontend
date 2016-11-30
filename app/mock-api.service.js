@@ -9,30 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-const accounts_service_1 = require('./accounts.service');
-let UserService = class UserService {
-    constructor(accountsService) {
-        this.accountsService = accountsService;
-        this.isAuthenticated = false;
-    }
-    login(auth_user) {
-        console.log("Attempting to Log in!");
-        this.accountsService.login(auth_user)
-            .then(x => this.user = x);
-        if (this.user) {
-            console.log(this.user);
-            this.isAuthenticated = true;
-        }
-    }
-    ;
-    getUser() {
-        console.log(this.user);
-        return this.user;
+let MockApiService = class MockApiService {
+    createDb() {
+        let accounts = [
+            {
+                first_name: "Jacquie",
+                last_name: "Elias",
+                username: "jacquie",
+                email: "jelias@smu.edu",
+                password: "yas",
+                isCounselor: false
+            },
+        ];
+        return {
+            accounts
+        };
     }
 };
-UserService = __decorate([
+MockApiService = __decorate([
     core_1.Injectable(), 
-    __metadata('design:paramtypes', [accounts_service_1.AccountsService])
-], UserService);
-exports.UserService = UserService;
-//# sourceMappingURL=user.service.js.map
+    __metadata('design:paramtypes', [])
+], MockApiService);
+exports.MockApiService = MockApiService;
+//# sourceMappingURL=mock-api.service.js.map

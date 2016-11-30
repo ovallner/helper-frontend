@@ -17,7 +17,8 @@ let ChatLanding = class ChatLanding {
         this.userService = userService;
         this.router = router;
         this.accountsService = accountsService;
-        this.accounts = accountsService.getAccounts();
+        this.accountsService.list()
+            .then(x => this.accounts = x);
         this.authUser = userService.getUser();
         this.counselorAccounts = [];
         if (!this.authUser.isCounselor) {

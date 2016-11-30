@@ -12,6 +12,8 @@ const core_1 = require('@angular/core');
 const platform_browser_1 = require('@angular/platform-browser');
 const forms_1 = require('@angular/forms');
 const router_1 = require('@angular/router');
+const http_1 = require('@angular/http');
+const angular_in_memory_web_api_1 = require('angular-in-memory-web-api');
 const chat_component_1 = require('./chat/chat.component');
 const app_component_1 = require('./app.component');
 const create_an_account_component_1 = require('./create-an-account/create-an-account.component');
@@ -22,6 +24,7 @@ const user_service_1 = require('./user.service');
 const accounts_service_1 = require('./accounts.service');
 const chat_landing_component_1 = require('./chat/chat-landing.component');
 const home_component_1 = require('./home/home.component');
+const mock_api_service_1 = require('./mock-api.service');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -29,13 +32,15 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            http_1.HttpModule,
             router_1.RouterModule.forRoot([
                 { path: '', component: login_component_1.AccountLoginComponent },
                 { path: 'register', component: create_an_account_component_1.AccountCreateComponent },
                 { path: 'chat', component: chat_component_1.ChatComponent },
                 { path: 'chatrooms', component: chat_landing_component_1.ChatLanding },
                 { path: 'home', component: home_component_1.HomeComponent }
-            ])
+            ]),
+            angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(mock_api_service_1.MockApiService)
         ],
         declarations: [
             app_component_1.AppComponent,

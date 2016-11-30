@@ -20,7 +20,8 @@ export class ChatLanding {
                 private router: Router,
                 private accountsService: AccountsService){
         
-        this.accounts = accountsService.getAccounts();
+        this.accountsService.list()
+        .then(x => this.accounts = x);
         this.authUser = userService.getUser();
         this.counselorAccounts = [];
         if(!this.authUser.isCounselor)

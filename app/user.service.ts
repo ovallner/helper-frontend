@@ -11,24 +11,18 @@ export class UserService {
 
     constructor(private accountsService : AccountsService){
         this.isAuthenticated = false;
-        this.accounts = accountsService.getAccounts();
     }
-    isAccount(username, password) {
-        if(this.accounts.find(temp => temp.username === username) && this.accounts.find(temp => temp.password === password)) {
-            this.user = this.accounts.find(temp => temp.username === username);
-            this.login(this.user);
-            console.log(this.user);
-            return true;
-        } else {
-            return false; 
-        }
-    }; 
+
 
     login(auth_user) {
         console.log("Attempting to Log in!");
-        this.user = auth_user;
-        console.log(this.user);
-        this.isAuthenticated = true;
+        this.accountsService.login(auth_user)
+        .then(x => this.user = x);
+        if (this.user) {
+            console.log(this.user);
+            this.isAuthenticated = true;
+        }
+
     };
 
     getUser() : any{

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
 import { AccountsService } from './../accounts.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'account-create',
@@ -15,20 +15,22 @@ export class AccountCreateComponent {
     accounts : User[];
     _temp : User;
 
-	constructor(private accountsService : AccountsService){
+	constructor(private accountsService : AccountsService, private route: ActivatedRoute, private router: Router){
 		this.title = "Create An Account";
-        this.accounts = accountsService.getAccounts();
+        accountsService.list()
+			.then(x => this.accounts = x);
         this._temp = new User; 
         /** clear temp */
 	};
 
-    createAccount() {
 
-       this.accountsService.addAccount(this._temp);
+    createAccount() {
+        this.accountsService.add(this._temp)
+			.then(() => this.router.navigateByUrl('/home'));
         /** clear temp */
         console.log("I have been clicked");
         console.log(this._temp);
-        console.log(this.accountsService.accounts);
     };
+
 
 }

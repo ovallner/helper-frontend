@@ -9,28 +9,70 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
+const http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
 let AccountsService = class AccountsService {
-    constructor() {
-        this.accounts = new Array();
-        this.accounts.push({ first_name: "Oscar", last_name: "Vallner", username: "ovallner", email: "ovallner@gmail.com", password: "password123", isCounselor: true });
-        this.accounts.push({ first_name: "Osco", last_name: "Vallno", username: "ovall", email: "ovallner@gmail.com", password: "password123", isCounselor: true });
-        this.accounts.push({ first_name: "Donald", last_name: "Trump", username: "badhombre", email: "placeholder@email.com", password: "password", isCounselor: false });
-        this.accounts.push({ first_name: "Donald", last_name: "Trump", username: "the_donald", email: "placeholder@email.com", password: "password", isCounselor: false });
+    constructor(http) {
+        this.http = http;
+        this._apiUrl = 'localhost:8080/accounts';
     }
-    getAccounts() {
-        return this.accounts;
+    list() {
+        return this.http.get(this._apiUrl)
+            .toPromise()
+            .then(x => x.json().data);
     }
-    getAccount(username) {
-        var account = this.accounts.find(myUser => myUser.username === username);
-        return account;
+    get(username) {
+        var pluck = x => (x && x.length) ? x[0] : undefined;
+        return this.http
+            .get(`${this._apiUrl}/?username=${username}`)
+            .toPromise()
+            .then(x => pluck(x.json().data))
+            .catch(x => alert(x.json().error));
     }
-    addAccount(user) {
-        this.accounts.push(user);
+    checkName(username) {
+        var pluck = x => (x && x.length) ? x[0] : undefined;
+        return this.http
+            .get(`${this._apiUrl}/?id=${username}`)
+            .toPromise()
+            .then(x => pluck(x.json().data))
+            .catch(x => alert(x.json().error));
+    }
+    add(account) {
+        console.log(account);
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        //var options = new RequestOptions({ headers: headers });
+        return this.http
+            .post(`${this._apiUrl}/register`, JSON.stringify(account), { headers: headers })
+            .toPromise()
+            .then(x => x)
+            .catch(x => alert(x.json().error));
+    }
+    update(account) {
+        return this.http
+            .post(`${this._apiUrl}/${account.username}`, account)
+            .toPromise()
+            .then(() => account)
+            .catch(x => alert(x.json().error));
+    }
+    delete(account) {
+        return this.http
+            .delete(`${this._apiUrl}/${account.username}`, account)
+            .toPromise()
+            .catch(x => alert(x.json().error));
+    }
+    login(credentials) {
+        var pluck = x => (x && x.length) ? x[0] : undefined;
+        return this.http
+            .post(`${this._apiUrl}/login`, credentials)
+            .toPromise()
+            .then(x => pluck(x.json().data))
+            .catch(x => alert(x.json().error));
     }
 };
 AccountsService = __decorate([
     core_1.Injectable(), 
-    __metadata('design:paramtypes', [])
+    __metadata('design:paramtypes', [http_1.Http])
 ], AccountsService);
 exports.AccountsService = AccountsService;
 //# sourceMappingURL=accounts.service.js.map
