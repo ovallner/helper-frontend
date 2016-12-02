@@ -12,16 +12,41 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 
 export class AccountCreateComponent { 
 	title : string;
-    accounts : User[];
     _temp : User;
+    role : string;
 
 	constructor(private accountsService : AccountsService, private route: ActivatedRoute, private router: Router){
 		this.title = "Create An Account";
-        accountsService.list()
-			.then(x => this.accounts = x);
         this._temp = new User; 
         /** clear temp */
 	};
+
+    checkName(id) {
+        var onload = (data) => {
+			if(data){
+                return false;
+			} else {
+				return true; 
+			}
+		};
+        this.accountsService.get(id) 
+            .then(onload);
+
+    }
+
+    private returnToList(message){
+		this.router.navigateByUrl('/')
+			.then(() => alert(message));
+	}
+
+    setRole(role) {
+        if(role == "counselor") {
+            this._temp.isCounselor = true;
+        } else {
+            this._temp.isCounselor = false; 
+        }
+        console.log("i have been clicked in setrole");
+    }
 
 
     createAccount() {

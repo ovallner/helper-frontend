@@ -50,6 +50,13 @@ export class ChatComponent implements OnInit, OnDestroy {
     //});
   }
   
+      toHome() {
+        this.router.navigateByUrl("home");
+    }
+        toCounselor() {
+        this.router.navigateByUrl("counselorProfile");
+    }
+
   ngOnDestroy() {
     this.connection.unsubscribe();
   }

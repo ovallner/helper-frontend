@@ -25,6 +25,7 @@ const accounts_service_1 = require('./accounts.service');
 const chat_landing_component_1 = require('./chat/chat-landing.component');
 const home_component_1 = require('./home/home.component');
 const mock_api_service_1 = require('./mock-api.service');
+const counselor_profiles_component_1 = require('./counselor-profiles/counselor-profiles.component');
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -38,7 +39,8 @@ AppModule = __decorate([
                 { path: 'register', component: create_an_account_component_1.AccountCreateComponent },
                 { path: 'chat', component: chat_component_1.ChatComponent },
                 { path: 'chatrooms', component: chat_landing_component_1.ChatLanding },
-                { path: 'home', component: home_component_1.HomeComponent }
+                { path: 'home', component: home_component_1.HomeComponent },
+                { path: 'counselorProfile', component: counselor_profiles_component_1.CounselorProfilesComponent }
             ]),
             angular_in_memory_web_api_1.InMemoryWebApiModule.forRoot(mock_api_service_1.MockApiService)
         ],
@@ -48,7 +50,8 @@ AppModule = __decorate([
             create_an_account_component_1.AccountCreateComponent,
             chat_landing_component_1.ChatLanding,
             chat_component_1.ChatComponent,
-            home_component_1.HomeComponent
+            home_component_1.HomeComponent,
+            counselor_profiles_component_1.CounselorProfilesComponent
         ],
         bootstrap: [app_component_1.AppComponent],
         providers: [user_service_1.UserService, accounts_service_1.AccountsService]

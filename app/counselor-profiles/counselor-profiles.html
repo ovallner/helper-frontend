@@ -14,20 +14,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a (click)="toHome()">Home</a></li>
-        <li><a (click)="toCounselor()">Private Chat</a></li>
-        <li><a selected href="../chat">Group Chat</a></li>
+        <li><a (click)="toHome()"selected>Home</a></li>
+        <li><a >Private Chat</a></li>
+        <li><a href="../chat">Group Chat</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<h2>Helper Chatroom!</h2>
-<div id="chat">
-  <div *ngFor="let message of messages" id="messages">
-    <span id="username">{{message.user}}:</span>
-    <span id="message">{{message.body}}</span>
-  </div>
-  <span id="send-box"><input [(ngModel)]="message_text" id="message-box" /><button (click)="sendMessage()">Send</button></span>
+<div class="container">
 </div>
-       
+<div class="container" *ngIf="counselors">
+    <div class="row">
+        <div class="col-md-12">
+            <h1> {{ title }} </h1>
+            <div class="profile" *ngFor="let counselor of showingCounselors">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <h3 class="name">{{counselor.first_name}} {{ counselor.last_name}} </h3>
+                <button type="button" (click)="toChat()" id="sendbutton"class="btn btn-block btn-success" href="#">Chat</button>
+            </div> 
+        </div>
+    </div>
+</div>

@@ -16,6 +16,8 @@ import { AccountsService } from './accounts.service';
 import { ChatLanding } from './chat/chat-landing.component';
 import { HomeComponent } from './home/home.component';
 import { MockApiService } from './mock-api.service';
+import { CounselorProfilesComponent } from './counselor-profiles/counselor-profiles.component';
+
 
 @NgModule({
   imports:      [ 
@@ -27,7 +29,8 @@ import { MockApiService } from './mock-api.service';
       { path: 'register', component: AccountCreateComponent },
       { path: 'chat', component: ChatComponent },
       { path: 'chatrooms', component: ChatLanding},
-      { path: 'home', component: HomeComponent}
+      { path: 'home', component: HomeComponent},
+      { path: 'counselorProfile', component: CounselorProfilesComponent}
     ]),
     InMemoryWebApiModule.forRoot(MockApiService)
   ],
@@ -37,7 +40,8 @@ import { MockApiService } from './mock-api.service';
     AccountCreateComponent,
     ChatLanding,
     ChatComponent,
-    HomeComponent
+    HomeComponent,
+    CounselorProfilesComponent
     //DashboardCounselorComponent,
     //DashboardPatientComponent
   ],

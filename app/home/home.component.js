@@ -23,6 +23,12 @@ let HomeComponent = class HomeComponent {
     toChat() {
         this.router.navigateByUrl("chat");
     }
+    toGroupChat() {
+        this.router.navigateByUrl("chatrooms");
+    }
+    toCounselor() {
+        this.router.navigateByUrl("counselorProfile");
+    }
 };
 HomeComponent = __decorate([
     core_1.Component({

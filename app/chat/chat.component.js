@@ -41,6 +41,12 @@ let ChatComponent = class ChatComponent {
         //this.user = this.accountsService.getAccount
         //});
     }
+    toHome() {
+        this.router.navigateByUrl("home");
+    }
+    toCounselor() {
+        this.router.navigateByUrl("counselorProfile");
+    }
     ngOnDestroy() {
         this.connection.unsubscribe();
     }

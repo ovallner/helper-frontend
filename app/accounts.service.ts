@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AccountsService {
-	private _apiUrl  = 'localhost:8080/accounts';
+	private _apiUrl  = 'app/accounts';
 
 	constructor(private http: Http){}
 
@@ -16,12 +16,18 @@ export class AccountsService {
 	}
 
 	get(username : string) : Promise<any> {
+		console.log(username);
 		var pluck = x => (x && x.length) ? x[0] : undefined;
+		console.log(this.http
+			.get(`${this._apiUrl}/?username=${username}`)
+			.toPromise()
+			.then(x => x.json().data as any));
 		return this.http
 			.get(`${this._apiUrl}/?username=${username}`)
 			.toPromise()
-			.then(x => pluck(x.json().data))
-			.catch(x => alert(x.json().error));
+			.then(x => x.json().data as any);
+			//.then(x => pluck(x.json().data))
+			//.catch(x => alert(x.json().error));
 	}
 
 	checkName(username : string) : Promise<boolean> {
@@ -35,15 +41,11 @@ export class AccountsService {
 	}
 
 	add(account) : Promise<User> {
-		console.log(account);
-		var headers = new Headers();
-		headers.append('Content-Type', 'application/json');
-		//var options = new RequestOptions({ headers: headers });
 
 		return this.http 
-			.post(`${this._apiUrl}/register`, JSON.stringify(account), {headers: headers})
+			.post(this._apiUrl, account)
 			.toPromise()
-			.then(x => x)
+			.then(() => account)
 			.catch(x => alert(x.json().error));
 	}
 

@@ -1,29 +1,54 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">Helper!</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a selected>Home</a></li>
+        <li><a (click)="toChat()">Group Chat</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
 <div class="container">
     <div class="row row-centered">
         <div class="col-md-12">
-            <h1>Welcome {{user.first_name}}! </h1>
+            <h1>Welcome {{user.first_name}}!</h1>
             <h3>What would you like to do today?</h3>
         </div>
         <div class="col-md-3 col-centered">
             <div class="option1">
-                <a class="btn btn-circle btn-info" href="#"><span class="glyphicon glyphicon-user"></span></a>
-                <a href><h4>Private chat</h4></a>
+                <a class="btn btn-circle btn-success" (click)="toCounselor()"><span class="glyphicon glyphicon glyphicon-send"></span></a>
+                <a (click)="toCounselor()"><h4>Private chat</h4></a>
                 <p>I would like to enter a private chat with a counselor.</p>
             </div>
         </div>
         <div class="col-md-3 col-centered">
             <div class="option2">
-                <a class="btn btn-circle btn-info" (click)="toChat()"><span class="glyphicon glyphicon-th-list"></span></a>
+                <a class="btn btn-circle btn-success" (click)="toChat()"><span class="glyphicon glyphicon-th-list"></span></a>
                 <a (click)="toChat()"><h4>Groupchat</h4></a>
                 <p>I would like to enter a groupchat with other users and a moderator.</p>
             </div>
         </div>
+        <!--
         <div class="col-md-3 col-centered">
             <div class="option3">
-                <a class= "btn btn-circle btn-info" href="#"><span class="glyphicon"></span></a>
-                <a href><h4>Sleep</h4></a>
-                <p>I would like to get off my computer and sleep.</p>
+                <a class= "btn btn-circle btn-success" href="#"><span class="glyphicon glyphicon-user"></span></a>
+                <a href><h4>My Profile</h4></a>
+                <p>I would like to view my profile.</p>
             </div>
         </div>
+        -->
     </div>
 </div>

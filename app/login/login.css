@@ -78,6 +78,7 @@ p.form-title
     min-height: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
+    font-size: 10px;
 }
 .login label, form.login a
 {

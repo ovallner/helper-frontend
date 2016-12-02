@@ -14,6 +14,30 @@ export class MockApiService implements InMemoryDbService {
                 password: "yas",
                 isCounselor: false
             },
+            {
+                first_name: "Oscar",
+                last_name: "Vallner",
+                username: "ovallner",
+                email: "ovallner@gmail.com",
+                password: "password",
+                isCounselor: true
+            },
+            {
+                first_name: "Donald",
+                last_name: "Trump",
+                username: "dtrump",
+                email: "badhombre@gmail.com",
+                password: "password",
+                isCounselor: false
+            },
+            {
+                first_name: "Traian",
+                last_name: "Pop",
+                username: "Tpop",
+                email: "tpop@gmail.com",
+                password: "hunter3",
+                isCounselor: true
+            }
         ];
 
         return {

@@ -14,7 +14,7 @@ require('rxjs/add/operator/toPromise');
 let AccountsService = class AccountsService {
     constructor(http) {
         this.http = http;
-        this._apiUrl = 'localhost:8080/accounts';
+        this._apiUrl = 'app/accounts';
     }
     list() {
         return this.http.get(this._apiUrl)
@@ -22,12 +22,18 @@ let AccountsService = class AccountsService {
             .then(x => x.json().data);
     }
     get(username) {
+        console.log(username);
         var pluck = x => (x && x.length) ? x[0] : undefined;
+        console.log(this.http
+            .get(`${this._apiUrl}/?username=${username}`)
+            .toPromise()
+            .then(x => x.json().data));
         return this.http
             .get(`${this._apiUrl}/?username=${username}`)
             .toPromise()
-            .then(x => pluck(x.json().data))
-            .catch(x => alert(x.json().error));
+            .then(x => x.json().data);
+        //.then(x => pluck(x.json().data))
+        //.catch(x => alert(x.json().error));
     }
     checkName(username) {
         var pluck = x => (x && x.length) ? x[0] : undefined;
@@ -38,14 +44,10 @@ let AccountsService = class AccountsService {
             .catch(x => alert(x.json().error));
     }
     add(account) {
-        console.log(account);
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        //var options = new RequestOptions({ headers: headers });
         return this.http
-            .post(`${this._apiUrl}/register`, JSON.stringify(account), { headers: headers })
+            .post(this._apiUrl, account)
             .toPromise()
-            .then(x => x)
+            .then(() => account)
             .catch(x => alert(x.json().error));
     }
     update(account) {

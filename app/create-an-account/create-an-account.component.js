@@ -18,12 +18,35 @@ let AccountCreateComponent = class AccountCreateComponent {
         this.route = route;
         this.router = router;
         this.title = "Create An Account";
-        accountsService.list()
-            .then(x => this.accounts = x);
         this._temp = new user_1.User;
         /** clear temp */
     }
     ;
+    checkName(id) {
+        var onload = (data) => {
+            if (data) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        };
+        this.accountsService.get(id)
+            .then(onload);
+    }
+    returnToList(message) {
+        this.router.navigateByUrl('/')
+            .then(() => alert(message));
+    }
+    setRole(role) {
+        if (role == "counselor") {
+            this._temp.isCounselor = true;
+        }
+        else {
+            this._temp.isCounselor = false;
+        }
+        console.log("i have been clicked in setrole");
+    }
     createAccount() {
         this.accountsService.add(this._temp)
             .then(() => this.router.navigateByUrl('/home'));

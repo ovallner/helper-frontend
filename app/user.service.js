@@ -13,15 +13,26 @@ const accounts_service_1 = require('./accounts.service');
 let UserService = class UserService {
     constructor(accountsService) {
         this.accountsService = accountsService;
+        accountsService.list()
+            .then(x => this.accounts = x);
+        console.log(this.accounts);
         this.isAuthenticated = false;
     }
     login(auth_user) {
         console.log("Attempting to Log in!");
-        this.accountsService.login(auth_user)
-            .then(x => this.user = x);
-        if (this.user) {
+        console.log(auth_user);
+        this.accountsService.list()
+            .then(x => this.accounts = x);
+        let temp = this.accounts.find(myObj => myObj.username == auth_user.username);
+        console.log("asdf");
+        console.log(temp);
+        if (temp.password == auth_user.password) {
+            this.user = temp;
             console.log(this.user);
             this.isAuthenticated = true;
+        }
+        else {
+            console.log("login unsuccessful");
         }
     }
     ;

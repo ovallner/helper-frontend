@@ -1,21 +1,29 @@
 
 
 .btn-circle {
-  width: 79px;
-  height: 79px;
+  width: 200px;
+  height: 200px;
   text-align: center;
-  padding: 20px 0;
-  font-size: 30px;
+  padding: 40px 0;
+  font-size: 100px;
   line-height: 2.00;
-  border-radius: 70px;
+  border-radius: 100px;
 }
 
 .row-centered {
     text-align:center;
 }
+a h4 {
+    color: #7CB85E;
+}
 
+a h4 :hover {
+    color: #008000;
+}
 p {
     font-size: 18px;
+    font-family: 'Open Sans' , sans-serif;
+        font-weight: 150;
 }
 .col-centered {
     display:inline-block;
@@ -31,5 +39,39 @@ h1 {
 
 .container {
 
-    padding-top: 100px;
+    padding-top: 50px;
+}
+
+.navbar-fixed-bottom {
+    background-color: grey;
+    height: 100px;
+    text-align: center;
+}
+
+.navbar {
+    background-color: #7CB85E;;
+    color: white;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.collapse navbar-collapse {
+    color: white;
+}
+
+.navbar .navbar-default .navbar-fixed-top {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #333;
+}
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+    color: #333;
 }
