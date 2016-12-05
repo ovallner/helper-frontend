@@ -20,25 +20,19 @@ let CounselorProfilesComponent = class CounselorProfilesComponent {
         this.router = router;
         this.userService = userService;
         this.title = "Choose a Counselor";
-        this.accountsService.list()
+        accountsService.list()
             .then(x => this.counselors = x);
-        this._temp = this.userService.getUser();
-        this.userIsCounselor = this._temp.isCounselor;
-        /*for(let counselor in this.counselors) {
-            console.log(counselor);
-            if (counselor.isCounselor != this.userIsCounselor) {
-                this.showingCounselors.push(counselor);
-            }
-        }*/
         this.showingCounselors = this.counselors;
-        /*this.showingCounselors = [
-{
+        this.showingCounselors = [
+            {
                 first_name: "Jacquie",
                 last_name: "Elias",
                 username: "jacquie",
                 email: "jelias@smu.edu",
                 password: "yas",
-                isCounselor: false
+                isCounselor: false,
+                years: "",
+                expertise: ""
             },
             {
                 first_name: "Joe",
@@ -46,7 +40,9 @@ let CounselorProfilesComponent = class CounselorProfilesComponent {
                 username: "joe",
                 email: "joke@smu.edu",
                 password: "sdf",
-                isCounselor: true
+                isCounselor: true,
+                years: "",
+                expertise: ""
             },
             {
                 first_name: "Mom",
@@ -54,7 +50,9 @@ let CounselorProfilesComponent = class CounselorProfilesComponent {
                 username: "hi",
                 email: "hi@smu.edu",
                 password: "yas",
-                isCounselor: false
+                isCounselor: false,
+                years: "",
+                expertise: ""
             },
             {
                 first_name: "Cristelle",
@@ -62,9 +60,11 @@ let CounselorProfilesComponent = class CounselorProfilesComponent {
                 username: "cris",
                 email: "cris@smu.edu",
                 password: "no",
-                isCounselor: false
+                isCounselor: false,
+                years: "",
+                expertise: ""
             },
-        ]*/
+        ];
         this._temp = new user_1.User;
         console.log(this.showingCounselors);
         /** clear temp */
