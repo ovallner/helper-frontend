@@ -51,7 +51,7 @@ p.form-title
 
 }
 
-.login input[type="submit"]
+button[type="submit"]
 {
     width: 100%;
     font-size: 14px;

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../user';
 import { AccountsService } from './../accounts.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'counselor-profiles',
@@ -12,17 +13,31 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
 
 export class CounselorProfilesComponent { 
 	title : string;
+    accounts: User[];
     counselors : User[];
     showingCounselors : User[];
     _temp : User;
+    userIsCounselor: boolean;
 
-	constructor(private accountsService : AccountsService, private route: ActivatedRoute, private router: Router){
-		this.title = "Choose a Counselor";
-        accountsService.list()
-			.then(x => this.counselors = x);
-        this.showingCounselors = this.counselors; 
+	constructor(private accountsService : AccountsService, 
+        private route: ActivatedRoute, 
+        private router: Router,
+        private userService: UserService) {
+		    this.title = "Choose a Counselor";
+            
+            this.accountsService.list()
+			    .then(x => this.counselors = x);
+            this._temp = this.userService.getUser();
+            this.userIsCounselor = this._temp.isCounselor;
+            /*for(let counselor in this.counselors) {
+                console.log(counselor);
+                if (counselor.isCounselor != this.userIsCounselor) {
+                    this.showingCounselors.push(counselor);
+                }
+            }*/
+            this.showingCounselors = this.counselors; 
 
-        this.showingCounselors = [
+        /*this.showingCounselors = [
 {
                 first_name: "Jacquie",
                 last_name: "Elias",
@@ -55,13 +70,16 @@ export class CounselorProfilesComponent {
                 password: "no",
                 isCounselor: false
             },
-        ]
+        ]*/
         this._temp = new User; 
         console.log(this.showingCounselors);
         
 
         /** clear temp */
 	};
+    toHome() {
+        this.router.navigateByUrl("home");
+    }
 
     toChat() {
         this.router.navigateByUrl("chat");

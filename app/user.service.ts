@@ -30,9 +30,11 @@ export class UserService {
             this.user = temp;
             console.log(this.user);
             this.isAuthenticated = true;
+            return true;
         }
         else {
             console.log("login unsuccessful");
+            return false;
         }
 
     };
@@ -40,5 +42,9 @@ export class UserService {
     getUser() : any{
         console.log(this.user);
         return this.user;
+    }
+
+    setUser(newUser) {
+        this.user = newUser;
     }
 }

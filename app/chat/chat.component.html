@@ -23,6 +23,7 @@
 </nav>
 
 <h2>Helper Chatroom!</h2>
+<div id="room">
 <div id="chat">
   <div *ngFor="let message of messages" id="messages">
     <span id="username">{{message.user}}:</span>
@@ -30,4 +31,4 @@
   </div>
   <span id="send-box"><input [(ngModel)]="message_text" id="message-box" /><button (click)="sendMessage()">Send</button></span>
 </div>
-       
+</div>

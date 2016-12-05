@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
 import { AccountsService } from './../accounts.service';
+import { UserService } from '../user.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
@@ -15,7 +16,10 @@ export class AccountCreateComponent {
     _temp : User;
     role : string;
 
-	constructor(private accountsService : AccountsService, private route: ActivatedRoute, private router: Router){
+	constructor(private accountsService : AccountsService, 
+                private route: ActivatedRoute, 
+                private router: Router,
+                private userService: UserService){
 		this.title = "Create An Account";
         this._temp = new User; 
         /** clear temp */
@@ -39,22 +43,17 @@ export class AccountCreateComponent {
 			.then(() => alert(message));
 	}
 
-    setRole(role) {
-        if(role == "counselor") {
-            this._temp.isCounselor = true;
-        } else {
-            this._temp.isCounselor = false; 
+    checkIfLogged(){
+        if(this.userService.getUser()) {
+            console.log("logged in");
+            this.router.navigateByUrl('home');
         }
-        console.log("i have been clicked in setrole");
     }
-
-
     createAccount() {
-        this.accountsService.add(this._temp)
-			.then(() => this.router.navigateByUrl('/home'));
-        /** clear temp */
-        console.log("I have been clicked");
-        console.log(this._temp);
+        this.accountsService.add(this._temp);
+        this.userService.setUser(this._temp);
+        this.checkIfLogged();
+
     };
 
 

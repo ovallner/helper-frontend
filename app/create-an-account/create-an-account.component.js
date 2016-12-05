@@ -11,12 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require('@angular/core');
 const user_1 = require('../user');
 const accounts_service_1 = require('./../accounts.service');
+const user_service_1 = require('../user.service');
 const router_1 = require('@angular/router');
 let AccountCreateComponent = class AccountCreateComponent {
-    constructor(accountsService, route, router) {
+    constructor(accountsService, route, router, userService) {
         this.accountsService = accountsService;
         this.route = route;
         this.router = router;
+        this.userService = userService;
         this.title = "Create An Account";
         this._temp = new user_1.User;
         /** clear temp */
@@ -38,21 +40,16 @@ let AccountCreateComponent = class AccountCreateComponent {
         this.router.navigateByUrl('/')
             .then(() => alert(message));
     }
-    setRole(role) {
-        if (role == "counselor") {
-            this._temp.isCounselor = true;
+    checkIfLogged() {
+        if (this.userService.getUser()) {
+            console.log("logged in");
+            this.router.navigateByUrl('home');
         }
-        else {
-            this._temp.isCounselor = false;
-        }
-        console.log("i have been clicked in setrole");
     }
     createAccount() {
-        this.accountsService.add(this._temp)
-            .then(() => this.router.navigateByUrl('/home'));
-        /** clear temp */
-        console.log("I have been clicked");
-        console.log(this._temp);
+        this.accountsService.add(this._temp);
+        this.userService.setUser(this._temp);
+        this.checkIfLogged();
     }
     ;
 };
@@ -63,7 +60,7 @@ AccountCreateComponent = __decorate([
         styleUrls: ['./app/create-an-account/create-an-account.css'],
         providers: [accounts_service_1.AccountsService]
     }), 
-    __metadata('design:paramtypes', [accounts_service_1.AccountsService, router_1.ActivatedRoute, router_1.Router])
+    __metadata('design:paramtypes', [accounts_service_1.AccountsService, router_1.ActivatedRoute, router_1.Router, user_service_1.UserService])
 ], AccountCreateComponent);
 exports.AccountCreateComponent = AccountCreateComponent;
 //# sourceMappingURL=create-an-account.component.js.map

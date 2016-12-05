@@ -30,15 +30,20 @@ let UserService = class UserService {
             this.user = temp;
             console.log(this.user);
             this.isAuthenticated = true;
+            return true;
         }
         else {
             console.log("login unsuccessful");
+            return false;
         }
     }
     ;
     getUser() {
         console.log(this.user);
         return this.user;
+    }
+    setUser(newUser) {
+        this.user = newUser;
     }
 };
 UserService = __decorate([

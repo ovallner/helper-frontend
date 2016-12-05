@@ -15,6 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a selected>Home</a></li>
+        <li><a (click)="toCounselor()">Private Chat</a></li>
         <li><a (click)="toChat()">Group Chat</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -38,7 +39,7 @@
             <div class="option2">
                 <a class="btn btn-circle btn-success" (click)="toChat()"><span class="glyphicon glyphicon-th-list"></span></a>
                 <a (click)="toChat()"><h4>Groupchat</h4></a>
-                <p>I would like to enter a groupchat with other users and a moderator.</p>
+                <p>I would like to enter a groupchat with other users.</p>
             </div>
         </div>
         <!--
